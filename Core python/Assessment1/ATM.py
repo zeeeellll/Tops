@@ -1,10 +1,10 @@
 class assisment1:
-    pin = 0
+    
     def __init__(self):
-        #self.balance()
-        self.set_pin()
+        self.pin = None
+        self.balance = 0
 
-
+        self.creat_pin()  
 
     def menu(self):
         print('''
@@ -22,44 +22,125 @@ class assisment1:
         if user_input == '1':
             self.change_pin()
         elif user_input == '2':
-            pass
+            self.check_balance()
         elif user_input == '3':
-            pass
+            self.deposite_amt() 
         elif user_input == '4':
-            pass
-        else :
+            self.withdraw_amt()
+        elif user_input == '5':
             exit()
+        else:
+            print("Enter valid choice !")
+            self.menu()
 
-    def set_pin(self):
-        global pin
-        create_pin = input("Enter Your Pin to create : ")
-  
-        if len(create_pin) == 4:
-            pin = create_pin
-            print("Your pin has been create successfully")
-            print(f"Your pin is {pin}")
+    def creat_pin(self):
+        pinn = input("Enter pin to create : ")
+        if(len(pinn)) == 4:
+            self.pin = pinn
+            print("Your pin is : ",self.pin)
             self.menu()
         else:
-            print("Enter only 4 digits")
+            print("Enter 4 digit number")
 
 
-    def change_pin():
-        global pin
-        pinn = int(input("Enter Your pin : "))
-        
-        if pinn == pin:
-            new_pin = input("Enter new pin : ")
-            if len(new_pin) == 4:
-                pin = new_pin
-                print("Your pin has been create successfully")
-                print(f"Your pin is {pin}")
-                self.menu()
+    def change_pin(self):
+        count = 3
+        for _ in range(3):
+            pinn = input("Enter your pin : ")
+            if(pinn == self.pin):
+                new_pin = input("Enter new pin : ")
+                if(len(new_pin)) == 4:
+                    self.pin = new_pin
+                    print("Your new pin is",self.pin)
+                    self.menu()
+                else:
+                    print("Enter 4 digit number")
+                    break
             else:
-                print("Enter only 4 digits")
-        else:
-            print("Inncorrect pin")
-            self.menu()
-            
-    
-obj = assisment1()
+                count-=1
+                if count > 1:
+                    print(f"Incorrect pin, you have {count} attempts")
+                elif count == 1 :
+                    print("Incorrect pin, you have one last attempt")
+                else:
+                    print("Try again after some time")
+                    self.menu()
 
+    def check_balance(self):
+        count = 3
+        for _ in range(3):
+            pinn = input("Enter your pin : ")
+            if(pinn == self.pin):
+                if(self.balance == 0):
+                    print(f"Your balance is :{self.balance}")
+                    self.menu()
+                else:
+                    print(f"Your balance is : {self.balance}")
+                    self.menu()
+                    break
+            else:
+                count-=1
+                if count > 1:
+                    print(f"Incorrect pin, you have {count} attempts")
+                elif count == 1 :
+                    print("Incorrect pin, you have one last attempt")
+                else:
+                    print("Try again after some time")
+                    self.menu()
+            
+    def deposite_amt(self):
+        count = 3
+        for _ in range(3):
+            pinn = input("Enter your pin : ")
+            if(pinn == self.pin):
+                amt = int(input("Enter amount to deposite : "))
+                if(amt > 0):
+                    self.balance+=amt
+                    print(f"{amt} has been deposite successfully ")
+                    print(f"Yout total amount is : {amt}")
+                    self.menu()
+                else:
+                    print("Enter valid amount")
+                    self.deposite_amt()
+                break
+            else:
+                count-=1
+                if count > 1:
+                    print(f"Incorrect pin, you have {count} attempts")
+                elif count == 1 :
+                    print("Incorrect pin, you have one last attempt")
+                else:
+                    print("Try again after some time")
+                    self.menu()
+
+    def withdraw_amt(self):
+        count = 3
+        for _ in range(3):
+            pinn = input("Enter your pin : ")
+            if(pinn == self.pin):
+                amt = int(input("Enter amount to Withdraw : "))
+                if(amt > 0):
+                    if(self.balance <= 0):
+                        print("Insufficient balance in your account !")
+                        self.menu()
+                        break
+                    else:
+                        self.balance-=amt
+                        print(f"{amt} has been Withdraw successfully ")
+                        print(f"Yout total amount is : {amt}")
+                        self.menu()
+                        break
+                else:
+                    print("Enter valid amount !")
+                    self.menu()
+            else:
+                count-=1
+                if count > 1:
+                    print(f"Incorrect pin, you have {count} attempts")
+                elif count == 1 :
+                    print("Incorrect pin, you have one last attempt")
+                else:
+                    print("Try again after some time")
+                    self.menu()
+
+obj = assisment1()
