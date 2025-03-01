@@ -2941,3 +2941,58 @@ select * from c_u;
 
 -- Find employees who have changed jobs (using job_history) and their current job title using a CTE.
 
+use hrdb;
+-- Display all information in the tables EMP and DEPT.     
+
+select * from employees;
+select * from departments;
+
+
+	SELECT hire_date, concat(first_name,' ',last_name) as employee_name
+	FROM employees;
+
+SELECT CONCAT(first_name, ', ', job_id) AS "Employee and Title"
+FROM employees;
+
+SELECT hire_date, concat(first_name,' ',last_name) as employee_name, department_id  
+FROM employees  
+WHERE job_id = 'ST_CLERK' or 'PU_CLERK';
+
+SELECT CONCAT(employee_id, ', ', first_name, ', ', last_name, ', ', email, ', ', 
+              phone_number, ', ', hire_date, ', ', job_id, ', ', salary, ', ', 
+              commission_pct, ', ', manager_id, ', ', department_id) AS "THE OUTPUT"
+FROM employees;
+
+
+SELECT first_name, last_name, salary  
+FROM employees  
+WHERE salary > 2000;
+
+SELECT CONCAT(first_name, ' ', last_name) AS "Name", hire_date AS "Start Date"  
+FROM employees;
+
+SELECT CONCAT(first_name, ' ', last_name) AS Name, hire_date AS "Hire Date"  
+FROM employees  
+ORDER BY hire_date;
+
+select concat(first_name, ' ', last_name) as name, salary  
+from employees  
+order by salary desc;
+
+select concat(first_name, ' and ', department_id) as "ename and deptno", salary  
+from employees  
+where commission_pct is not null  
+order by salary desc;
+
+select last_name, job_id  
+from employees  
+where manager_id is null;
+
+
+select distinct job_id from employees;
+
+select last_name, job_id, salary  
+from employees  
+where job_id in ('SA_REP', 'SH_CLERK')  
+and salary not in (2500, 3500, 5000);
+
