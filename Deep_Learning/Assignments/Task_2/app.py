@@ -61,9 +61,9 @@ if uploaded_file is not None:
 
     if model is None:
         try:
-            model = load_model('mnist_cnn.h5')
+            model = load_model(r'C:\Users\MAHADEV\Desktop\Tops\Deep_Learning\Assignments\Task_2\saved_models\mnist_cnn_model.keras')
         except Exception as e:
-            st.error('Could not load model. Place mnist_cnn.h5 in the same directory as app.py. Error: '+str(e))
+            st.error('Could not load model. Place mnist_cnn.keras in the same directory as app.py. Error: '+str(e))
 
 
     if model is not None:
