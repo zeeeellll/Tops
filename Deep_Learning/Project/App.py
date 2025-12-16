@@ -12,7 +12,7 @@ st.set_page_config(page_title="Image Classification App", layout="centered")
 # ...
 @st.cache_resource
 def load_model():
-    model_path = 'resnet50_model_new.h5' 
+    model_path = r'/workspaces/Tops/Deep_Learning/Project/Emotion_detection_project.ipynb' 
 
     try:
         # st.write(f"Attempting to load model from: {os.path.abspath(model_path)}")
