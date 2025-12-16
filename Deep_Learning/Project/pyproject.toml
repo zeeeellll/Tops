@@ -1,9 +1,12 @@
-[tool.poetry]
+[project]
 name = "emotion-detection-project"
 version = "0.1.0"
 description = "Emotion detection project (migrated from requirements.txt to Poetry pyproject)"
+requires-python = ">=3.8,<3.12"
+
+[tool.poetry]
 authors = ["Zeel Mistry <mistryzeel21@gmail.com>"]
-readme = "README.md"
+packages = [{ include = "emotion_detection_project" }]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.12"
